@@ -7,7 +7,7 @@ In this repo I've provided a base implementation of a very simple todo app writt
 1. Clone this repository to your local machine and reinstall bower components and node modules.
 ```
 $ cd <your_dev_folder>
-$ git clone https://github.com/cameronwilby/vstda-ng2.git
+$ git clone https://github.com/cameronwilby/vstda-ng1.git
 $ bower install
 $ npm install
 ```
