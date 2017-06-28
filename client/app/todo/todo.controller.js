@@ -22,7 +22,7 @@
                 item: vm.newTodo.text
             }
             $http
-                .post('http://localhost:3000/todos', vm.newTodo)
+                .post('/todos', vm.newTodo)
                 .then(response => {
                     console.log('You added a todo!')
                 });
@@ -32,6 +32,17 @@
         function removeTodo(todo) {
             var index = vm.todos.indexOf(todo);
             vm.todos.splice(index, 1);
+
+        }
+
+        activate();
+
+        function activate() { 
+            $http
+                .get('/todos')
+                .then(res => {
+                    vm.todos = res.data;
+                });
         }
     }
 })();
