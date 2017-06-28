@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/matthewhaotran/VSTD-NG1/issues"
   },
-  "homepage": "https://github.com/matthewhaotran/VSTD-NG1#readme"
+  "homepage": "https://github.com/matthewhaotran/VSTD-NG1#readme",
+  "engines": {
+    "node": "8.1.2"
+  }
 }
