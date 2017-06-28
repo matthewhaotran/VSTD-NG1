@@ -5,9 +5,9 @@
         .module('app')
         .controller('TodoController', TodoController)
 
-    TodoController.$inject = [];
+    TodoController.$inject = ['$http'];
 
-    function TodoController() {
+    function TodoController($http) {
         var vm = this;
 
         vm.newTodo = {};
@@ -18,8 +18,15 @@
         //////////
 
         function addTodo(todo) {
-            vm.todos.push(todo);
-            vm.newTodo = {};
+            vm.newTodo = {
+                item: vm.newTodo.text
+            }
+            $http
+                .post('http://localhost:3000/todos', vm.newTodo)
+                .then(response => {
+                    console.log('You added a todo!')
+                });
+                vm.todos.push(vm.newTodo);
         }
 
         function removeTodo(todo) {

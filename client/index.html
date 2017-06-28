@@ -5,43 +5,61 @@
     <title>Very Simple Todo App</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 
 <body ng-controller="TodoController as todoCtrl">
-    <header>
-        <h1>Very Simple Todo App</h1>
-        <p>Get more done, faster</p>
-    </header>
 
-    <hr>
+    <div class="container">
 
-    <form ng-submit="todoCtrl.addTodo(todoCtrl.newTodo)">
-        <div>
-            <label>What needs to get done?</label>
-            <input type="text" ng-model="todoCtrl.newTodo.text" />
+        <div class="jumbotron">
+            <h1>Very Simple Todo App</h1>
+            <p>Get more done, faster</p>
         </div>
 
-        <div>
-            <label>How high a priority is this?</label>
-            <select ng-model="todoCtrl.newTodo.priority">
-                <option value="1">Low Priority</option>
-                <option value="2">Medium Priority</option>
-                <option value="3">High Priority</option>
-            </select>
+        <hr>
+
+        <div class="row">
+
+            <form ng-submit="todoCtrl.addTodo(todoCtrl.newTodo)">
+                
+                <div class="col-md-6">
+                    <label>What needs to get done?</label>
+                    <input type="text" class="form-control" ng-model="todoCtrl.newTodo.text" />
+                </div>
+
+                <div class="col-md-4">
+                    <label>How high a priority is this?</label>
+                    <select  class="form-control" ng-model="todoCtrl.newTodo.priority">
+                        <option value="1">Low Priority</option>
+                        <option value="2">Medium Priority</option>
+                        <option value="3">High Priority</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label></label>
+                    <button class="btn btn-primary form-control"type="submit">Add</button>
+                </div>
+
+            </form>
+
         </div>
 
-        <button type="submit">Add</button>
-    </form>
+        <hr>
 
-    <section>
-        <ul>
-            <li ng-repeat="todo in todoCtrl.todos">
-                {{todo.text}} 
-                (<a ng-click="todoCtrl.removeTodo(todo)">Remove</a>)
-            </li>
-        </ul>
-    </section>
+        <section>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="todo in todoCtrl.todos | orderBy:value">
+                    {{todo.item}} <a class="btn btn-success btn-xs pull-right"ng-click="todoCtrl.removeTodo(todo)">Remove</a>  
+                </li>
+            </ul>
+        </section>
 
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/todo/todo.controller.js"></script>
