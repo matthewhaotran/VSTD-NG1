@@ -9,5 +9,17 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3"
-  }
+  },
+  "description": "In this repo I've provided a base implementation of a very simple todo app written in AngularJS. Your mission (should you choose to accept it) is to complete the app by completing the remaining tasks outlined below.",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewhaotran/VSTD-NG1.git"
+  },
+  "author": "Matthew Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewhaotran/VSTD-NG1/issues"
+  },
+  "homepage": "https://github.com/matthewhaotran/VSTD-NG1#readme"
 }
