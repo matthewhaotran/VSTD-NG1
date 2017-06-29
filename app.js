@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/todos');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/todos');
 
 const Todo = mongoose.model('Todo', {
     item: String
