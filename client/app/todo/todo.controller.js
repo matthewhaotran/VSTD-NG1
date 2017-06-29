@@ -31,7 +31,13 @@
 
         function removeTodo(todo) {
             var index = vm.todos.indexOf(todo);
+            console.log(index);
             vm.todos.splice(index, 1);
+            $http
+                .delete('/todos', index)
+                .then(res => {
+                    alert('You removed a todo');
+                });
 
         }
 
