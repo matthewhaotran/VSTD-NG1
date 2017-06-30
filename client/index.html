@@ -30,7 +30,7 @@
 
                 <div class="col-md-4">
                     <label>How high a priority is this?</label>
-                    <select  class="form-control" ng-model="todoCtrl.newTodo.priority">
+                    <select class="form-control" ng-model="todoCtrl.value" convert-to-number>
                         <option value="1">Low Priority</option>
                         <option value="2">Medium Priority</option>
                         <option value="3">High Priority</option>
@@ -49,9 +49,9 @@
         <hr>
 
         <section>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="todo in todoCtrl.todos | orderBy:value">
-                    {{todo.item}} <a class="btn btn-success btn-xs pull-right"ng-click="todoCtrl.removeTodo(todo)">Remove</a>  
+            <ul class="list-group" ng-cloak>
+                <li class="list-group-item" ng-repeat="todo in todoCtrl.todos | orderBy:'-priority'">
+                    {{todo.item}} <a class="btn btn-success btn-xs pull-right" ng-click="todoCtrl.removeTodo(todo)">Remove</a>  
                 </li>
             </ul>
         </section>

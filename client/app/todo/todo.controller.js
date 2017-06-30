@@ -14,29 +14,36 @@
         vm.todos = [];
         vm.addTodo = addTodo;
         vm.removeTodo = removeTodo;
+        vm.value = 0;
 
         //////////
 
         function addTodo(todo) {
             vm.newTodo = {
-                item: vm.newTodo.text
+                item: vm.newTodo.text,
+                priority: vm.value[0],
+                priorityDescrption: vm.value[1]
             }
+            console.log(vm.newTodo);
             $http
                 .post('/todos', vm.newTodo)
                 .then(response => {
                     console.log('You added a todo!')
                 });
                 vm.todos.push(vm.newTodo);
+                activate();
+                console.log(vm.value);
         }
 
         function removeTodo(todo) {
             var index = vm.todos.indexOf(todo);
-            console.log(index);
+            var id = (vm.todos[index]._id)
+            console.log(id);
             vm.todos.splice(index, 1);
             $http
-                .delete('/todos', index)
+                .delete('/todos/' + id)
                 .then(res => {
-                    alert('You removed a todo');
+                    console.log('You removed a todo');
                 });
 
         }

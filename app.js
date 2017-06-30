@@ -6,7 +6,9 @@ const app = express();
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/todos');
 
 const Todo = mongoose.model('Todo', {
-    item: String
+    item: String,
+    priority: Number,
+    priorityDescription: String
 }); 
 
 const port = process.env.PORT || 3000;
@@ -25,6 +27,7 @@ app.get('/todos', (req, res) => {
 });
 
 app.post('/todos', (req, res) => {
+    console.log(req.body);
     const newTodo = new Todo(req.body);
 
     newTodo.save(function(err) {
@@ -36,9 +39,15 @@ app.post('/todos', (req, res) => {
     }); 
 });
 
-app.delete('/todos', (req, res) => {
-    console.log(req.index);
-    todos.splice(req.index, 1);
+app.delete('/todos/:id', (req, res) => {
+    console.log(req.params.id);
+    Todo.remove({_id: req.params.id}, (err) => {
+        if (err) {
+            return console.log(err);
+        } else {
+            res.send('ok');
+        }
+    });
 });
 
 
